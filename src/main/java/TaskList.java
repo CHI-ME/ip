@@ -14,6 +14,17 @@ public class TaskList {
         return message;
     }
 
+    public String delete(int i) throws DukeException {
+        if (i> list.size()) {
+            throw new DukeException("invalid input");
+        }
+        String message = "Noted. I've removed this task:\n";
+        message += list.get(i-1).toString() + "\n";
+        this.list.remove(i-1);
+        message += "Now you have " + list.size() + " tasks in the list.";
+        return message;
+    }
+
     public String mark(int i) {
         Task task = this.list.get(i-1);
         task.mark_As_Done();

@@ -58,7 +58,10 @@ public class Ninon {
                         String to = message.split("/")[2].replace("to ","");
                         respond = list.add_List(new Event(description, from, to));
                     }
-                } else {
+                } else if (Objects.equals(message.split(" ")[0], "delete")){
+                    respond = list.delete(Integer.parseInt(message.split(" ")[1]));
+                }
+                else {
                     throw new DukeException("OOPS!!! I'm sorry, but I don't know what that means :-(");
                 }
                 System.out.println(SPLIT + respond + "\n" + SPLIT);
