@@ -1,8 +1,8 @@
 public class Task {
     private Boolean done;
-    public final String event;
-    public Task(Boolean done, String event) {
-        this.done = done;
+    private String event;
+    public Task(String event) {
+        this.done = false;
         this.event = event;
     }
 
@@ -14,7 +14,7 @@ public class Task {
         this.done = false;
     }
 
-    public String to_String() {
+    public String toString() {
         if (this.done) {
             return "[X] " + this.event;
         }
