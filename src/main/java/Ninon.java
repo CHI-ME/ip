@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Ninon {
 
     public static final String SPLIT = "____________________________________________________________\n";
-    public static ArrayList<String> list = new ArrayList<String>(100);
+    public static TaskList list = new TaskList();
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String greet = "Hello! I'm NINON\n" +
@@ -20,9 +20,15 @@ public class Ninon {
             if (Objects.equals(message, "bye")) {
                 break;
             } else if (Objects.equals(message, "list")) {
-                respond = print_List();
+                respond = list.to_String();
+            } else if (Objects.equals(message.split(" ")[0], "mark")) {
+                respond = "Nice! I've marked this task as done:\n";
+                respond += list.mark(Integer.parseInt(message.split(" ")[1]));
+            } else if (Objects.equals(message.split(" ")[0], "unmark")) {
+                respond = "Nice! I've marked this task as not done yet:\n";
+                respond += list.unmark(Integer.parseInt(message.split(" ")[1]));
             } else {
-                respond = add_List(message);
+                respond = list.add_List(message);
             }
             System.out.println(SPLIT + respond + "\n" + SPLIT);
             message = input.nextLine();
@@ -35,17 +41,4 @@ public class Ninon {
         return message;
     }
 
-    public static String add_List(String message) {
-        list.add(message);
-        return "added " + message;
-    }
-
-    public static String print_List() {
-        String message = "";
-        for (int i = 0; i < list.size(); i++) {
-            message += (i + 1);
-            message += ". " + list.get(i) + "\n";
-        }
-        return message;
-    }
 }
