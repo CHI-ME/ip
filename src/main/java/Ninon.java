@@ -1,3 +1,4 @@
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -43,7 +44,12 @@ public class Ninon {
                     } else {
                         String description = message.split("/")[0].replace("deadline ","");
                         String by = message.split("/")[1].replace("by ","");
-                        respond = list.add_List(new Deadline(description, by));
+                        try {
+                            respond = list.add_List(new Deadline(description, by));
+                        } catch (DateTimeParseException e) {
+                           respond = ("date input format should be yyyy-mm-dd or date out of range");
+                        }
+
                     }
                 } else if (Objects.equals(message.split(" ")[0], "event")) {
                     if (message.split(" ").length == 1) {
@@ -56,7 +62,12 @@ public class Ninon {
                         String description = message.split("/")[0].replace("event ","");
                         String from = message.split("/")[1].replace("from ","");
                         String to = message.split("/")[2].replace("to ","");
-                        respond = list.add_List(new Event(description, from, to));
+                        try {
+                            respond = list.add_List(new Event(description, from, to));
+                        } catch (DateTimeParseException e) {
+                            respond = ("date input format should be yyyy-mm-dd or date out of range");
+                        }
+
                     }
                 } else if (Objects.equals(message.split(" ")[0], "delete")){
                     respond = list.delete(Integer.parseInt(message.split(" ")[1]));
