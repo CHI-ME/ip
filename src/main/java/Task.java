@@ -23,8 +23,8 @@ public class Task {
 
     public String formatOut() {
         if (this.done) {
-            return "1 | " + this.event;
+            return "1 / " + this.event;
         }
-        return "0 | " + this.event;
+        return "0 / " + this.event;
     }
 }

@@ -17,6 +17,6 @@ public class Deadline extends Task {
 
     @Override
     public String formatOut() {
-        return "D | " + super.formatOut() + " | " + this.by;
+        return "D / " + super.formatOut() + " / " + this.by;
     }
 }

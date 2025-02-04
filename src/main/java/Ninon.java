@@ -33,7 +33,7 @@ public class Ninon {
 
 
     public static void main(String[] args) {
-        new Ninon("data/tasks.txt").run();
+        new Ninon("tasks.txt").run();
     }
 
 

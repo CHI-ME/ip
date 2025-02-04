@@ -10,16 +10,20 @@ public class TaskList {
     public TaskList(ArrayList<String> input) {
         for (String data : input) {
             Task task;
-            if (Objects.equals(data.split("\\|")[0], "T ")) {
-                task = new Todo(data.split("\\|")[2]);
-            } else if (Objects.equals(data.split("\\|")[0], "D ")) {
-                task = new Deadline(data.split("\\|")[2],data.split("\\|")[3]);
-            } else if (Objects.equals(data.split("\\|")[0], "E ")) {
-                task = new Event(data.split("\\|")[2],data.split("\\|")[3],data.split("\\|")[4]);
+            if (Objects.equals(data.split("/")[0], "T ")) {
+                task = new Todo(data.split("/")[2].replace(" ", ""));
+            } else if (Objects.equals(data.split("/")[0], "D ")) {
+                task = new Deadline(data.split("/")[2].replace(" ", ""),
+                        data.split("/")[3].replace(" ", ""));
+            } else if (Objects.equals(data.split("/")[0], "E ")) {
+                task = new Event(data.split("/")[2].replace(" ", ""),
+                        data.split("/")[3].replace(" ", ""),
+                        data.split("/")[4].replace(" ", ""));
             } else { continue; }
-            if (Objects.equals(data.split("\\|")[0],"1 ")) {
+            if (Objects.equals(data.split("/")[0],"1 ")) {
                 task.mark_As_Done();
             }
+            this.list.add(task);
         }
     }
 

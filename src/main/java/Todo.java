@@ -11,6 +11,6 @@ public class Todo extends Task {
 
     @Override
     public String formatOut() {
-        return "T | " + super.formatOut();
+        return "T / " + super.formatOut();
     }
 }

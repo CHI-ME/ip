@@ -21,6 +21,6 @@ public class Event extends Task {
 
     @Override
     public String formatOut() {
-        return "E | " + super.formatOut() + " | " + this.from + " | " + this.to;
+        return "E / " + super.formatOut() + " / " + this.from + " / " + this.to;
     }
 }

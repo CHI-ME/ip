@@ -13,7 +13,7 @@ public class Storage {
     }
 
     public ArrayList<String> load() throws DukeException{
-        ArrayList<String> list = new ArrayList<String>(100);
+        ArrayList<String> list = new ArrayList<>(100);
         try {
             File file = new File(path);
             Scanner scanner = new Scanner(file);
