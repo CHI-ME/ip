@@ -18,4 +18,9 @@ public class Event extends Task {
                 " (from: " + from.format(formatter) +
                 " to: " + to.format(formatter) + ")";
     }
+
+    @Override
+    public String formatOut() {
+        return "E | " + super.formatOut() + " | " + this.from + " | " + this.to;
+    }
 }

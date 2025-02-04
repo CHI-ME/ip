@@ -20,4 +20,11 @@ public class Task {
         }
         return "[ ] " + this.event;
     }
+
+    public String formatOut() {
+        if (this.done) {
+            return "1 | " + this.event;
+        }
+        return "0 | " + this.event;
+    }
 }

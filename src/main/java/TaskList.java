@@ -1,12 +1,26 @@
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TaskList {
-    private final ArrayList<Task> list;
+    private final ArrayList<Task> list = new ArrayList<Task>(100);
     public TaskList() {
-        this.list = new ArrayList<Task>(100);
-        exportTaskList();
+
+    }
+
+    public TaskList(ArrayList<String> input) {
+        for (String data : input) {
+            Task task;
+            if (Objects.equals(data.split("\\|")[0], "T ")) {
+                task = new Todo(data.split("\\|")[2]);
+            } else if (Objects.equals(data.split("\\|")[0], "D ")) {
+                task = new Deadline(data.split("\\|")[2],data.split("\\|")[3]);
+            } else if (Objects.equals(data.split("\\|")[0], "E ")) {
+                task = new Event(data.split("\\|")[2],data.split("\\|")[3],data.split("\\|")[4]);
+            } else { continue; }
+            if (Objects.equals(data.split("\\|")[0],"1 ")) {
+                task.mark_As_Done();
+            }
+        }
     }
 
     public String add_List(Task task) {
@@ -14,44 +28,31 @@ public class TaskList {
         String message = "Got it. I've added this task: \n";
         message += task.toString() + "\n";
         message += "Now you have " + list.size() + " tasks in the list.";
-        exportTaskList();
         return message;
     }
 
-    public String delete(int i) throws DukeException {
-        if (i> list.size()) {
-            throw new DukeException("invalid input");
-        }
+    public String delete(int i) {
         String message = "Noted. I've removed this task:\n";
         message += list.get(i-1).toString() + "\n";
         this.list.remove(i-1);
         message += "Now you have " + list.size() + " tasks in the list.";
-        exportTaskList();
         return message;
     }
 
     public String mark(int i) {
         Task task = this.list.get(i-1);
         task.mark_As_Done();
-        exportTaskList();
-        return task.toString() + "\n";
+        return "Nice! I've marked this task as done:\n" + task.toString() + "\n";
     }
 
     public String unmark(int i) {
         Task task = this.list.get(i-1);
         task.mark_As_Not_Done();
-        exportTaskList();
-        return task.toString() + "\n";
+        return "Nice! I've marked this task as not done yet:\n" + task.toString() + "\n";
     }
 
-    public void exportTaskList() {
-        try (FileWriter writer = new FileWriter("output.txt")) {
-            for (Task item : list) {
-                writer.write(item.toString() + System.lineSeparator());
-            }
-        } catch (IOException e) {
-            System.out.println("export failed");
-        }
+    public ArrayList<Task> getList() {
+        return this.list;
     }
 
     public String toString() {
