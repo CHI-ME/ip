@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'checkstyle'
+}
+
+application {
+    mainClass.set("Duke.Ninon")
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+}
+
+run {
+    standardInput = System.in
+}
