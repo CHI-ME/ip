@@ -1,3 +1,5 @@
+package Duke;
+
 public class MarkCommand extends Command {
     public int num;
     public boolean is_mark;

@@ -1,3 +1,5 @@
+package Duke;
+
 public class Ninon {
     private Storage storage;
     private TaskList taskList;
