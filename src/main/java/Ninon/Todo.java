@@ -1,4 +1,4 @@
-package Duke;
+package Ninon;
 
 public class Todo extends Task {
 

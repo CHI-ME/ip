@@ -1,4 +1,4 @@
-package Duke;
+package Ninon;
 
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
@@ -47,7 +47,7 @@ public class Parser {
                 throw new DukeException("OOPS!!! The to of a event cannot be empty.");
             } else {
                 String description = message.split("/")[0].replace("event ", "");
-                String from = message.split("/")[1].replace("from ", "");
+                String from = message.split("/")[1].replace("from ", "").replace(" ","");
                 String to = message.split("/")[2].replace("to ", "");
                 try {
                     command = new AddCommand(new Event(description, from, to));

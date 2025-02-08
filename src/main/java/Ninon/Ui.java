@@ -1,4 +1,4 @@
-package Duke;
+package Ninon;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ public class Ui {
 
     public void greeting() {
         System.out.println("Hello! I'm NINON\n" +
-                "What can I do for you?\n");
+                "What can I do for you?");
     }
 
     public void exit() {

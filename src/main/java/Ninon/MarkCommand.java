@@ -1,4 +1,4 @@
-package Duke;
+package Ninon;
 
 public class MarkCommand extends Command {
     public int num;

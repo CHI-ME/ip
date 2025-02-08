@@ -1,4 +1,4 @@
-package Duke;
+package Ninon;
 
 import java.util.ArrayList;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package Duke;
+package Ninon;
 
 import java.io.File;
 import java.io.FileNotFoundException;

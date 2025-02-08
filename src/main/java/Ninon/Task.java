@@ -1,4 +1,4 @@
-package Duke;
+package Ninon;
 
 public class Task {
     private Boolean done;
