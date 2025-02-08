@@ -14,8 +14,9 @@ public class Parser {
         } else if (Objects.equals(message.split(" ")[0], "mark")) {
             command = new MarkCommand(Integer.parseInt(message.split(" ")[1]),true);
         } else if (Objects.equals(message.split(" ")[0], "unmark")) {
-
             command = new MarkCommand(Integer.parseInt(message.split(" ")[1]),false);
+        } else if (Objects.equals(message.split(" ")[0], "find")) {
+            command = new FindCommand(message.split(" ")[1]);
         } else if (Objects.equals(message.split(" ")[0], "todo")) {
             if (message.split(" ").length == 1) {
                 throw new DukeException("OOPS!!! The description of a todo cannot be empty.");

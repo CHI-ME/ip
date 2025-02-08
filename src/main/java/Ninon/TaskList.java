@@ -57,6 +57,16 @@ public class TaskList {
         return "Nice! I've marked this task as not done yet:\n" + task.toString() + "\n";
     }
 
+    public String find(String description) {
+        String message = "";
+        for (Task task : this.list) {
+            if (task.toString().contains(description)) {
+                message += task.toString();
+                message += "\n";
+            }
+        }
+        return "Here are the matching tasks in your list:\n" + message + "\n";
+    }
     public ArrayList<Task> getList() {
         return this.list;
     }
