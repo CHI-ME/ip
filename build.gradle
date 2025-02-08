@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'checkstyle'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 application {
@@ -30,6 +31,10 @@ test {
         showStackTraces true
         showStandardStreams = false
     }
+}
+
+shadowJar {
+    archiveFileName = 'ninon.jar'
 }
 
 
