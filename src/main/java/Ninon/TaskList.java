@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class TaskList {
-    private final ArrayList<Task> list = new ArrayList<Task>(100);
+    private final ArrayList<Task> list = new ArrayList<>(100);
     public TaskList() {
 
     }
