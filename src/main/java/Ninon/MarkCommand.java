@@ -43,13 +43,17 @@ public class MarkCommand extends Command {
      * @param ui The user interface to interact with the user.
      * @param storage The storage to handle saving and loading of tasks.
      */
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
+        String message;
         if (this.is_mark) {
-            ui.output(taskList.mark(num));
+            message = taskList.mark(num);
+            ui.output(message);
         } else {
-            ui.output(taskList.unmark(num));
+            message = taskList.unmark(num);
+            ui.output(message);
         }
         storage.export(taskList);
+        return message;
     }
 }
 

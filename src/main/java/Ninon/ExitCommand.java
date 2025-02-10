@@ -27,7 +27,8 @@ public class ExitCommand extends Command {
      * @param ui The user interface to interact with the user.
      * @param storage The storage (not modified in this command).
      */
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
         ui.exit();
+        return "Bye. Hope to see you again soon!\n";
     }
 }

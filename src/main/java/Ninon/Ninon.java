@@ -15,6 +15,18 @@ public class Ninon {
             taskList = new TaskList();
         }
     }
+
+    public Ninon() {
+        ui = new Ui();
+        storage = new Storage("tasks.txt");
+        try {
+            taskList = new TaskList(storage.load());
+        } catch (DukeException e) {
+            ui.showLoadingError();
+            taskList = new TaskList();
+        }
+    }
+
     public void run() {
         ui.greeting();
         boolean isExit = false;
@@ -33,6 +45,15 @@ public class Ninon {
         }
     }
 
+    public String getResponse(String input) {
+        try {
+            Command c = Parser.parse(input);
+            String message = c.execute(taskList, ui, storage);
+            return message;
+        } catch (DukeException e) {
+            return e.getMessage();
+        }
+    }
 
     public static void main(String[] args) {
         new Ninon("tasks.txt").run();

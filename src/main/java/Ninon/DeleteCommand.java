@@ -36,8 +36,10 @@ public class DeleteCommand extends Command {
      * @param ui The user interface to interact with the user.
      * @param storage The storage to handle saving and loading of tasks.
      */
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
-        ui.output(taskList.delete(num));
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
+        String message = taskList.delete(num);
+        ui.output(message);
         storage.export(taskList);
+        return message;
     }
 }

@@ -36,8 +36,10 @@ public class AddCommand extends Command {
      * @param ui The user interface to interact with the user.
      * @param storage The storage to handle saving and loading of tasks.
      */
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
-        ui.output(taskList.add_List(task));
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
+        String message = taskList.add_List(task);
+        ui.output(message);
         storage.export(taskList);
+        return message;
     }
 }
