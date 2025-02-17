@@ -59,6 +59,7 @@ public class TaskList {
 
     public String find(String description) {
         String message = "";
+        assert !(this.list.isEmpty()) : "list is empty";
         for (Task task : this.list) {
             if (task.toString().contains(description)) {
                 message += task.toString();
