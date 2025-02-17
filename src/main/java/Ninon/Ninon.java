@@ -1,5 +1,7 @@
 package Ninon;
 
+import Ninon.Command.Command;
+
 public class Ninon {
     private Storage storage;
     private TaskList taskList;
