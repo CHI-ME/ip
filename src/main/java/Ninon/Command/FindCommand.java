@@ -1,6 +1,10 @@
-package Ninon;
+package Ninon.Command;
 
-public class FindCommand extends Command {  
+import Ninon.Storage;
+import Ninon.TaskList;
+import Ninon.Ui;
+
+public class FindCommand extends Command {
 
     public String description;
 

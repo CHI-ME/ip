@@ -1,4 +1,4 @@
-package Ninon;
+package Ninon.Task;
 
 /**
  * Represents a to-do task without any specific date or time constraints.

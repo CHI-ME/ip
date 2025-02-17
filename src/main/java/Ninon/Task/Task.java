@@ -1,10 +1,10 @@
-package Ninon;
+package Ninon.Task;
 
 /**
  * Represents a task with a description and a completion status.
  */
 public class Task {
-    private Boolean done; // Indicates whether the task is completed.
+    private Boolean isDone; // Indicates whether the task is completed.
     private String event; // Stores the task description.
 
     /**
@@ -14,7 +14,7 @@ public class Task {
      * @param event the description of the task
      */
     public Task(String event) {
-        this.done = false;
+        this.isDone = false;
         this.event = event;
     }
 
@@ -22,14 +22,14 @@ public class Task {
      * Marks the task as completed.
      */
     public void mark_As_Done() {
-        this.done = true;
+        this.isDone = true;
     }
 
     /**
      * Marks the task as not completed.
      */
     public void mark_As_Not_Done() {
-        this.done = false;
+        this.isDone = false;
     }
 
     /**
@@ -40,7 +40,7 @@ public class Task {
      */
     @Override
     public String toString() {
-        if (this.done) {
+        if (this.isDone) {
             return "[X] " + this.event;
         }
         return "[ ] " + this.event;
@@ -53,7 +53,7 @@ public class Task {
      * @return a formatted string indicating task completion status and description
      */
     public String formatOut() {
-        if (this.done) {
+        if (this.isDone) {
             return "1 / " + this.event;
         }
         return "0 / " + this.event;

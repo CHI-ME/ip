@@ -1,5 +1,10 @@
 package Ninon;
 
+import Ninon.Task.Deadline;
+import Ninon.Task.Event;
+import Ninon.Task.Task;
+import Ninon.Task.Todo;
+
 import java.util.ArrayList;
 import java.util.Objects;
 

@@ -1,4 +1,8 @@
-package Ninon;
+package Ninon.Command;
+
+import Ninon.Storage;
+import Ninon.TaskList;
+import Ninon.Ui;
 
 /**
  * Represents a command to mark or unmark a task as done.
@@ -8,22 +12,22 @@ public class MarkCommand extends Command {
     /**
      * The index of the task to be marked or unmarked.
      */
-    public int num;
+    public int index;
 
     /**
      * Indicates whether the task should be marked as done (true) or not done (false).
      */
-    public boolean is_mark;
+    public boolean is_Mark;
 
     /**
      * Constructs a MarkCommand with the specified task index and mark status.
      *
-     * @param num The index of the task to be marked or unmarked.
-     * @param is_mark True to mark as done, false to unmark.
+     * @param index The index of the task to be marked or unmarked.
+     * @param is_Mark True to mark as done, false to unmark.
      */
-    public MarkCommand(int num, boolean is_mark) {
-        this.num = num;
-        this.is_mark = is_mark;
+    public MarkCommand(int index, boolean is_Mark) {
+        this.index = index;
+        this.is_Mark = is_Mark;
     }
 
     /**
@@ -45,11 +49,11 @@ public class MarkCommand extends Command {
      */
     public String execute(TaskList taskList, Ui ui, Storage storage) {
         String message;
-        if (this.is_mark) {
-            message = taskList.mark(num);
+        if (this.is_Mark) {
+            message = taskList.mark(index);
             ui.output(message);
         } else {
-            message = taskList.unmark(num);
+            message = taskList.unmark(index);
             ui.output(message);
         }
         storage.export(taskList);

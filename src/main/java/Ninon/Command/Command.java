@@ -1,4 +1,8 @@
-package Ninon;
+package Ninon.Command;
+
+import Ninon.Storage;
+import Ninon.TaskList;
+import Ninon.Ui;
 
 /**
  * Represents an abstract command that can be executed on a task list.

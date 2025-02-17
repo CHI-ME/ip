@@ -1,4 +1,7 @@
-package Ninon;
+package Ninon.Command;
+
+import Ninon.*;
+import Ninon.Task.Task;
 
 /**
  * Represents a command to add a task to the task list.

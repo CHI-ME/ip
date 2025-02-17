@@ -1,9 +1,10 @@
 package Ninon;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import Ninon.Task.Task;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
 
 class TaskListTest {
 
