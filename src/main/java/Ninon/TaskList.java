@@ -1,9 +1,6 @@
 package Ninon;
 
-import Ninon.Task.Deadline;
-import Ninon.Task.Event;
-import Ninon.Task.Task;
-import Ninon.Task.Todo;
+import Ninon.Task.*;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -26,7 +23,16 @@ public class TaskList {
                 task = new Event(data.split("/")[2].replace(" ", ""),
                         data.split("/")[3].replace(" ", ""),
                         data.split("/")[4].replace(" ", ""));
-            } else { continue; }
+            } else if (Objects.equals(data.split("/")[0], "A ")) {
+                if (data.split("/").length == 5) {
+                    task = new DoAfter(data.split("/")[2].replace(" ", ""),
+                            new Task(data.split("/")[4].replace(" ", "")));
+                } else {
+                    task = new DoAfter(data.split("/")[2].replace(" ", ""),
+                            data.split("/")[3].replace(" ", ""));
+                }
+            }
+            else { continue; }
             if (Objects.equals(data.split("/")[0],"1 ")) {
                 task.mark_As_Done();
             }

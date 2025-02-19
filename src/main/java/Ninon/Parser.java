@@ -1,9 +1,7 @@
 package Ninon;
 
 import Ninon.Command.*;
-import Ninon.Task.Deadline;
-import Ninon.Task.Event;
-import Ninon.Task.Todo;
+import Ninon.Task.*;
 
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
@@ -58,6 +56,21 @@ public class Parser {
             String to = message.split("/")[2].replace("to ", "");
             try {
                 command = new AddCommand(new Event(description, from, to));
+            } catch (DateTimeParseException e) {
+                throw new DukeException("date input format should be yyyy-mm-dd or date out of range");
+            }
+        } else if (Objects.equals(message.split(" ")[0], "doafter")) {
+            if (message.split(" ").length == 1) {
+                throw new DukeException("OOPS!!! The description of a doafter cannot be empty.");
+            }
+            String description = message.split("/")[0].replace("doafter ", "");
+            String by = message.split("/")[1].replace("by ", "");
+            try {
+                if (Objects.equals(by.split(" ")[0], "date")) {
+                    command = new AddCommand(new DoAfter(description, by));
+                } else {
+                    command = new AddCommand(new DoAfter(description, new Task(by)));
+                }
             } catch (DateTimeParseException e) {
                 throw new DukeException("date input format should be yyyy-mm-dd or date out of range");
             }
