@@ -1,8 +1,4 @@
-D / 0 / Assignment1 / 2025-02-21
-D / 0 / Assignment1 / 2025-02-21
+D / 1 / Assignment1 / 2025-02-21
 T / 0 / Assignment1
 E / 0 / AY2024-2025sem2 / 2025-01-13 / 2025-05-10
-E / 0 / Assignment1 / 2025-02-15 / 2025-02-21
-A / 0 / Assignment1 / 0 / da
-A / 0 / Assignment 1  / 2025-02-15
-A / 0 / Assignment 2  / 0 / Assignment 1
+A / 0 / Assignment2 / 0 / Assignment1

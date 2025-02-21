@@ -16,13 +16,13 @@ public class Parser {
         } else if (Objects.equals(message, "list")) {
             command = new ListCommand();
         } else if (Objects.equals(message.split(" ")[0], "mark")) {
-            assert message.split("").length != 1 : "description is missing:";
+            assert message.split("").length != 1 : "index is missing";
             command = new MarkCommand(Integer.parseInt(message.split(" ")[1]),true);
         } else if (Objects.equals(message.split(" ")[0], "unmark")) {
-            assert message.split("").length != 1 : "description is missing:";
+            assert message.split("").length != 1 : "index is missing";
             command = new MarkCommand(Integer.parseInt(message.split(" ")[1]),false);
         } else if (Objects.equals(message.split(" ")[0], "find")) {
-            assert message.split("").length != 1 : "description is missing:";
+            assert message.split("").length != 1 : "description is missing";
             command = new FindCommand(message.split(" ")[1]);
         } else if (Objects.equals(message.split(" ")[0], "todo")) {
             if (message.split(" ").length == 1) {
@@ -77,7 +77,7 @@ public class Parser {
                 throw new NinonException("date input format should be yyyy-mm-dd or date out of range");
             }
         } else if (Objects.equals(message.split(" ")[0], "delete")) {
-            assert message.split("").length != 1 : "description is missing:";
+            assert message.split("").length != 1 : "index is missing";
             command = new DeleteCommand(Integer.parseInt(message.split(" ")[1]));
         } else {
             throw new NinonException("OOPS!!! I'm sorry, but I don't know what that means :-(");
