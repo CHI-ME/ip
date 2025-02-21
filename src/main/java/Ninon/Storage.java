@@ -16,7 +16,7 @@ public class Storage {
         this.path = path;
     }
 
-    public ArrayList<String> load() throws DukeException{
+    public ArrayList<String> load() throws NinonException {
         ArrayList<String> list = new ArrayList<>(100);
         try {
             File file = new File(path);
@@ -26,7 +26,7 @@ public class Storage {
                 list.add(data);
             }
         } catch (FileNotFoundException e) {
-            throw new DukeException("file not found");
+            throw new NinonException("file not found");
         }
         return list;
     }

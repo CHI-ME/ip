@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class Parser {
 
-    public static Command parse(String message) throws DukeException {
+    public static Command parse(String message) throws NinonException {
         Command command;
         assert !Objects.equals(message, "") : "message is empty";
         if (Objects.equals(message, "bye")) {
@@ -26,30 +26,30 @@ public class Parser {
             command = new FindCommand(message.split(" ")[1]);
         } else if (Objects.equals(message.split(" ")[0], "todo")) {
             if (message.split(" ").length == 1) {
-                throw new DukeException("OOPS!!! The description of a todo cannot be empty.");
+                throw new NinonException("OOPS!!! The description of a todo cannot be empty.");
             }
             String description = message.split("/")[0].replace("todo ", "");
             command = new AddCommand(new Todo(description));
         } else if (Objects.equals(message.split(" ")[0], "deadline")) {
             if (message.split(" ").length == 1) {
-                throw new DukeException("OOPS!!! The description of a deadline cannot be empty.");
+                throw new NinonException("OOPS!!! The description of a deadline cannot be empty.");
             } else if (message.split("/").length == 1) {
-                throw new DukeException("OOPS!!! The by of a deadline cannot be empty.");
+                throw new NinonException("OOPS!!! The by of a deadline cannot be empty.");
             }
             String description = message.split("/")[0].replace("deadline ", "");
             String by = message.split("/")[1].replace("by ", "");
             try {
                 command = new AddCommand(new Deadline(description, by));
             } catch (DateTimeParseException e) {
-                throw new DukeException("date input format should be yyyy-mm-dd or date out of range");
+                throw new NinonException("date input format should be yyyy-mm-dd or date out of range");
             }
         } else if (Objects.equals(message.split(" ")[0], "event")) {
             if (message.split(" ").length == 1) {
-                throw new DukeException("OOPS!!! The description of a event cannot be empty.");
+                throw new NinonException("OOPS!!! The description of a event cannot be empty.");
             } else if (message.split("/").length == 1) {
-                throw new DukeException("OOPS!!! The from of a event cannot be empty.");
+                throw new NinonException("OOPS!!! The from of a event cannot be empty.");
             } else if (message.split("/").length == 2) {
-                throw new DukeException("OOPS!!! The to of a event cannot be empty.");
+                throw new NinonException("OOPS!!! The to of a event cannot be empty.");
             }
             String description = message.split("/")[0].replace("event ", "");
             String from = message.split("/")[1].replace("from ", "").replace(" ","");
@@ -57,11 +57,11 @@ public class Parser {
             try {
                 command = new AddCommand(new Event(description, from, to));
             } catch (DateTimeParseException e) {
-                throw new DukeException("date input format should be yyyy-mm-dd or date out of range");
+                throw new NinonException("date input format should be yyyy-mm-dd or date out of range");
             }
         } else if (Objects.equals(message.split(" ")[0], "doafter")) {
             if (message.split(" ").length == 1) {
-                throw new DukeException("OOPS!!! The description of a doafter cannot be empty.");
+                throw new NinonException("OOPS!!! The description of a doafter cannot be empty.");
             }
             String description = message.split("/")[0].replace("doafter ", "");
             String by = message.split("/")[1].replace("by ", "");
@@ -72,13 +72,13 @@ public class Parser {
                     command = new AddCommand(new DoAfter(description, new Task(by)));
                 }
             } catch (DateTimeParseException e) {
-                throw new DukeException("date input format should be yyyy-mm-dd or date out of range");
+                throw new NinonException("date input format should be yyyy-mm-dd or date out of range");
             }
         } else if (Objects.equals(message.split(" ")[0], "delete")) {
             assert message.split("").length != 1 : "description is missing:";
             command = new DeleteCommand(Integer.parseInt(message.split(" ")[1]));
         } else {
-            throw new DukeException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+            throw new NinonException("OOPS!!! I'm sorry, but I don't know what that means :-(");
         }
         return command;
     }

@@ -12,7 +12,7 @@ public class Ninon {
         storage = new Storage(filePath);
         try {
             taskList = new TaskList(storage.load());
-        } catch (DukeException e) {
+        } catch (NinonException e) {
             ui.showLoadingError();
             taskList = new TaskList();
         }
@@ -23,7 +23,7 @@ public class Ninon {
         storage = new Storage("tasks.txt");
         try {
             taskList = new TaskList(storage.load());
-        } catch (DukeException e) {
+        } catch (NinonException e) {
             ui.showLoadingError();
             taskList = new TaskList();
         }
@@ -39,7 +39,7 @@ public class Ninon {
                 Command c = Parser.parse(fullCommand);
                 c.execute(taskList, ui, storage);
                 isExit = c.isExit();
-            } catch (DukeException e) {
+            } catch (NinonException e) {
                 ui.showError(e.getMessage());
             } finally {
                 ui.split();
@@ -52,7 +52,7 @@ public class Ninon {
             Command c = Parser.parse(input);
             String message = c.execute(taskList, ui, storage);
             return message;
-        } catch (DukeException e) {
+        } catch (NinonException e) {
             return e.getMessage();
         }
     }
