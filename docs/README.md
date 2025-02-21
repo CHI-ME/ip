@@ -2,7 +2,9 @@
 
 ![image of Ui](https://github.com/CHI-ME/ip/blob/master/docs/Ui.png)
 
-// Product intro goes here
+With powerful task tracking features, Ninon provides a smarter way to work, plan, and achieve your goals today! 🚀
+
+# Feature List
 
 ## Adding todos
 
@@ -41,7 +43,7 @@ todo Group Meeting
 - **Success:**
     - Displays the todo added
     - Displays the number of tasks in the list
-    - UI updates to show the commands.
+    - UI updates to show the commands
         
     - Example output:
         
@@ -94,7 +96,7 @@ deadline Group Meeting /by 2025-03-29
 - **Success:**
     - Displays the deadline added
     - Displays the number of tasks in the list
-    - UI updates to show the commands.
+    - UI updates to show the commands
         
     - Example output:
         
@@ -149,7 +151,7 @@ event AY2024-2025 sem 2 /from 2025-01-13 /to 2025-05-10
 - **Success:**
     - Displays the event added
     - Displays the number of tasks in the list
-    - UI updates to show the commands.
+    - UI updates to show the commands
         
     - Example output:
         
@@ -206,7 +208,7 @@ doafter Assignment 2 /by Assignment 1
 - **Success:**
     - Displays the do-after added
     - Displays the number of tasks in the list
-    - UI updates to show the commands.
+    - UI updates to show the commands
         
     - Example output:
         
@@ -225,3 +227,199 @@ doafter Assignment 2 /by Assignment 1
     - `OOPS!!! The description of a do cannot be empty.` (If first `[DESCRIPTION]` is missing)
     - `OOPS!!! The description of an after cannot be empty.` (If `[DATE]` or `[DESCRIPTION]` after `/by` is missing)
     - `date input format should be yyyy-mm-dd or date out of range` (If `[DATE]` is invalid)
+
+## Show List of tasks
+
+**Purpose:** 
+
+Allows users to view the task list.
+
+---
+
+**Command Format:**
+
+```
+list
+```
+
+---
+
+
+**Outputs:**
+
+- **Success:**
+    - Displays the entire task list
+    - UI updates to show the commands
+        
+    - Example output:
+        
+        ```
+        Here are the tasks in your list:
+        1.[D][X] Assignment1 (by: 2 21 2025)
+        2.[T][ ] Assignment1
+        3.[E][ ] AY2024-2025sem2 (from: 1 13 2025 to: 5 10 2025)
+        4.[A][ ] Assignment2 (by: [ ] Assignment1)
+        ```
+
+
+## Mark/Unmark tasks
+
+**Purpose:** 
+
+Allows users to mark/unmark tasks in list as done/not done.
+
+---
+
+**Command Format:**
+
+```
+mark [INDEX]
+unmark [INDEX]
+```
+
+---
+
+**Example Commands:**
+
+```bash
+mark 1
+unmark 2
+```
+
+---
+
+**Parameters:**
+
+1. **`INDEX`**
+    - Index of the task to be marked/unmarked in the list, obtained by `list` method
+---
+
+**Outputs:**
+
+- **Success:**
+    - Displays the task status after marked/unmarked
+    - UI updates to show the commands
+        
+    - Example output:
+        
+        ```
+        Nice! I've marked this task as done:
+        [D][X] Assignment1 (by: 2 21 2025)
+        ```
+        ```
+        Nice! I've marked this task as not done yet:
+        [E][ ] AY2024-2025sem2 (from: 1 13 2025 to: 5 10 2025)
+        ```
+        
+- **Error Messages:**
+    - `index is missing` by java assertion(If `[INDEX]` is missing)
+
+
+## Find tasks
+
+**Purpose:** 
+
+Allows users to find tasks by providing substring of the task.
+
+---
+
+**Command Format:**
+
+```
+find [DESCRIPTION]
+```
+
+---
+
+**Example Commands:**
+
+```bash
+find assignment 1
+find 2 21
+```
+
+---
+
+**Parameters:**
+
+1. **`DESCRIPTION`**
+    - Substring of the task to be found
+    - Case sensitive
+---
+
+**Outputs:**
+
+- **Success:**
+    - Displays all the matching tasks in the list
+    - UI updates to show the commands
+        
+    - Example output:
+        
+        ```
+        Here are the matching tasks in your list:
+        [D][X] Assignment1 (by: 2 21 2025)
+        [T][ ] Assignment1
+        [A][ ] Assignment2 (by: [ ] Assignment1)
+        ```
+        ```
+        Here are the matching tasks in your list:
+        [D][X] Assignment1 (by: 2 21 2025)
+        ```
+        
+- **Error Messages:**
+    - `description is missing` by java assertion(If `[DESCRIPTION]` is missing)
+ 
+
+## Delete tasks
+
+**Purpose:** 
+
+Allows users to delete tasks by index of the task in the list.
+
+---
+
+**Command Format:**
+
+```
+delete [INDEX]
+```
+
+---
+
+**Example Commands:**
+
+```bash
+delete 1
+```
+
+---
+
+**Parameters:**
+
+1. **`INDEX`**
+    - Index of the task to be removed from the list
+---
+
+**Outputs:**
+
+- **Success:**
+    - Displays the removed task
+    - Displays remaining number of tasks in the list
+    - UI updates to show the commands
+        
+    - Example output:
+        
+        ```
+        Noted. I've removed this task:
+        [E][ ] Assignment1 (from: 2�� 15 2025 to: 2�� 21 2025)
+        Now you have 4 tasks in the list.
+        ```
+        
+- **Error Messages:**
+    - `index is missing` by java assertion(If `[INDEX]` is missing)
+
+
+## AI-generated content in project
+- User.png by DALL·E
+- Ninon.png by DALL·E
+- most javadocs by ChatGPT
