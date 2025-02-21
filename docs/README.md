@@ -422,4 +422,4 @@ delete 1
 ## AI-generated content in project
 - User.png by DALL·E
 - Ninon.png by DALL·E
-- most javadocs by ChatGPT
+- most javadocs comments by ChatGPT
