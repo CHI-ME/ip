@@ -61,13 +61,15 @@ public class Parser {
             }
         } else if (Objects.equals(message.split(" ")[0], "doafter")) {
             if (message.split(" ").length == 1) {
-                throw new NinonException("OOPS!!! The description of a doafter cannot be empty.");
+                throw new NinonException("OOPS!!! The description of a do cannot be empty.");
+            } else if (message.split("/").length == 1) {
+                throw new NinonException("OOPS!!! The description of an after cannot be empty.");
             }
             String description = message.split("/")[0].replace("doafter ", "");
             String by = message.split("/")[1].replace("by ", "");
             try {
                 if (Objects.equals(by.split(" ")[0], "date")) {
-                    command = new AddCommand(new DoAfter(description, by));
+                    command = new AddCommand(new DoAfter(description, by.split(" ")[1]));
                 } else {
                     command = new AddCommand(new DoAfter(description, new Task(by)));
                 }
